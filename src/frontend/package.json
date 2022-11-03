@@ -1,12 +1,11 @@
 {
-  "name": "html-academy-pizza-frontend",
+  "name": "pizza-frontend",
   "version": "1.0.1",
   "private": true,
-  "description": "html academy pizza frontend",
-  "author": "Manu Ustenko",
+  "description": "vue pizza frontend",
+  "author": "Elena I",
   "contributors": [
-    "Manu Ustenko",
-    "Sergii Shilingov"
+    "Elena I"
   ],
   "license": "MIT",
   "scripts": {
