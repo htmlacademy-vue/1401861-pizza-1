@@ -1,4 +1,37 @@
-export const INGRIDIENTS_IMAGE = [
+//модификаторы для изображений(тесто, ингридиенты, начинка)
+export const MODIFIER_IMAGE = [
+  //тесто
+  {
+    name: "Тонкое",
+    value: "light",
+  },
+  {
+    name: "Толстое",
+    value: "large",
+  },
+  //тесто
+  {
+    name: "23 см",
+    value: "small",
+  },
+  {
+    name: "32 см",
+    value: "normal",
+  },
+  {
+    name: "45 см",
+    value: "big",
+  },
+  //соусы
+  {
+    name: "Томатный",
+    value: "tomato",
+  },
+  {
+    name: "Сливочный",
+    value: "creamy",
+  },
+  //начинка
   {
     name: "Грибы",
     value: "mushrooms",

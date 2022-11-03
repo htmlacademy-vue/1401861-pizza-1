@@ -10,24 +10,20 @@
 
             <div class="sheet__content dough">
               <label
-                v-for="dough in pizza.dough"
-                :key="dough.id"
+                v-for="(doughItem, index) in dough"
+                :key="doughItem.id"
                 class="dough__input"
-                :class="[
-                  dough.id === 1
-                    ? 'dough__input--light'
-                    : 'dough__input--large',
-                ]"
+                :class="`dough__input--${doughItem.nameImage}`"
               >
                 <input
                   type="radio"
                   name="dought"
-                  value="light"
+                  :value="doughItem.nameImage"
                   class="visually-hidden"
-                  checked
+                  :checked="index === 0 ? 'checked' : ''"
                 />
-                <b>{{ dough.name }}</b>
-                <span>{{ dough.description }}</span>
+                <b>{{ doughItem.name }}</b>
+                <span>{{ doughItem.description }}</span>
               </label>
             </div>
           </div>
@@ -39,15 +35,17 @@
 
             <div class="sheet__content diameter">
               <label
-                v-for="size in pizza.sizes"
+                v-for="(size, index) in sizes"
                 :key="size.id"
-                class="diameter__input diameter__input--normal"
+                class="diameter__input"
+                :class="`diameter__input--${size.nameImage}`"
               >
                 <input
                   type="radio"
                   name="diameter"
-                  value="small"
+                  :value="size.nameImage"
                   class="visually-hidden"
+                  :checked="index === 1 ? 'checked' : ''"
                 />
                 <span>{{ size.name }}</span>
               </label>
@@ -66,11 +64,16 @@
                 <p>Основной соус:</p>
 
                 <label
-                  v-for="sauce in pizza.sauces"
+                  v-for="(sauce, index) in sauces"
                   :key="sauce.id"
                   class="radio ingredients__input"
                 >
-                  <input type="radio" name="sauce" value="tomato" checked />
+                  <input
+                    type="radio"
+                    name="sauce"
+                    :value="sauce.name"
+                    :checked="index === 0 ? 'checked' : ''"
+                  />
                   <span>{{ sauce.name }}</span>
                 </label>
               </div>
@@ -80,7 +83,7 @@
 
                 <ul class="ingredients__list">
                   <li
-                    v-for="ingredient in tasks"
+                    v-for="ingredient in ingredients"
                     :key="ingredient.id"
                     class="ingredients__item"
                   >
@@ -150,18 +153,16 @@
 </template>
 
 <script>
-import misc from "@/static/misc.json";
 import pizza from "@/static/pizza.json";
-import user from "@/static/user.json";
 import { addNewValue } from "@/common/helpers";
 export default {
   name: "IndexHome",
   data() {
     return {
-      misc,
-      pizza,
-      user,
-      tasks: pizza.ingredients?.map((task) => addNewValue(task)),
+      dough: pizza?.dough.map((item) => addNewValue(item)),
+      sizes: pizza?.sizes.map((item) => addNewValue(item)),
+      sauces: pizza?.sauces.map((item) => addNewValue(item)),
+      ingredients: pizza?.ingredients.map((item) => addNewValue(item)),
     };
   },
 };
